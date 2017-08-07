@@ -16,7 +16,7 @@ namespace RockPaperScissors
             this.playerNumber = playerNumber;
             playerName = $"Computer Player {playerNumber}";
         }
-        protected override void ChooseMove()
+        public override void ChooseMove()
         {
             Console.WriteLine($"{playerName} will now select their choice");
             playerSelection = rnd.Next(0, 5);

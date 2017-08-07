@@ -13,7 +13,7 @@ namespace RockPaperScissors
         public int playerScore;
         public string playerName;
 
-        protected abstract void ChooseMove();
+        public abstract void ChooseMove();
         public void AddScore()
         {
             playerScore += 1;

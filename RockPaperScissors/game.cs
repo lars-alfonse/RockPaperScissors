@@ -21,7 +21,11 @@ namespace RockPaperScissors
         {
             Console.WriteLine("How many human people will be playing? (1 or 2)");
             numberOfHumanPlayers = int.Parse(Console.ReadLine());
-            if(numberOfHumanPlayers != 1 || numberOfHumanPlayers != 2)
+            if(numberOfHumanPlayers == 1 || numberOfHumanPlayers == 2)
+            {
+                Console.WriteLine($"There will be {numberOfHumanPlayers} humans playing");
+            }
+            else
             {
                 Console.WriteLine("please select 1 or 2 players");
                 GetHumanPlayers();
@@ -44,12 +48,13 @@ namespace RockPaperScissors
             }
             else
             {
+                Console.WriteLine($"The Game will be Best out of {gameNumberChoice}");
                 decimal dividedGameNumber = gameNumberChoice / 2; 
                 scoreLimit = (int)Math.Ceiling(dividedGameNumber);
             }  
 
         }
-        protected void compareSelection(Player playerOne, Player playerTwo)
+        private void compareSelection(Player playerOne, Player playerTwo)
         {
             int scoreComparison;
             scoreComparison = (5 + playerOne.playerSelection + playerTwo.playerSelection) % 5;
@@ -68,7 +73,7 @@ namespace RockPaperScissors
                 playerOne.AddScore();
             }
         }
-        protected bool CheckScore(Player playerOne, Player playerTwo)
+        private bool CheckScore(Player playerOne, Player playerTwo)
         {
             if (playerOne.playerScore > 2)
             {
@@ -84,6 +89,10 @@ namespace RockPaperScissors
             {
                 return false;
             }
+        }
+        private void ClearBoard()
+        {
+            Console.Clear();
         }
     }
 }
