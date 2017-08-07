@@ -9,10 +9,45 @@ namespace RockPaperScissors
     class Game
     {
         public int numberOfHumanPlayers;
+        public int scoreLimit;
 
         public Game()
         {
-            numberOfHumanPlayers = GetHumanPlayers();
+            GetHumanPlayers();
+            GetScoreLimit();
+        }
+
+        private void GetHumanPlayers()
+        {
+            Console.WriteLine("How many human people will be playing? (1 or 2)");
+            numberOfHumanPlayers = int.Parse(Console.ReadLine());
+            if(numberOfHumanPlayers != 1 || numberOfHumanPlayers != 2)
+            {
+                Console.WriteLine("please select 1 or 2 players");
+                GetHumanPlayers();
+            }
+        }
+        private void GetScoreLimit()
+        {
+            int gameNumberChoice;
+            Console.WriteLine("Please Select Number of Games: (Best out of...)");
+            gameNumberChoice = int.Parse(Console.ReadLine());
+            if (gameNumberChoice % 2 == 0)
+            {
+                Console.WriteLine("Please Select an odd number of games");
+                GetScoreLimit();
+            }
+            else if (gameNumberChoice < 3)
+            {
+                Console.WriteLine("Minimum number of games is three");
+                GetScoreLimit();
+            }
+            else
+            {
+                decimal dividedGameNumber = gameNumberChoice / 2; 
+                scoreLimit = (int)Math.Ceiling(dividedGameNumber);
+            }  
+
         }
         protected void compareSelection(Player playerOne, Player playerTwo)
         {
