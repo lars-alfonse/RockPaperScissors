@@ -57,7 +57,7 @@ namespace RockPaperScissors
         private void CompareSelection(Player playerOne, Player playerTwo)
         {
             int scoreComparison;
-            scoreComparison = (5 + playerOne.playerSelection + playerTwo.playerSelection) % 5;
+            scoreComparison = (5 + playerOne.playerSelection - playerTwo.playerSelection) % 5;
             if (scoreComparison == 0)
             {
                 Console.WriteLine("Tie Game");
