@@ -8,10 +8,15 @@ namespace RockPaperScissors
 {
     abstract class Player
     {
-        public int playerNumber;
-        public int playerSelection;
-        public int playerScore;
+        protected int playerNumber;
+        protected int playerSelection;
+        protected int playerScore;
+        protected string playerName;
 
         protected abstract void ChooseMove();
+        public void AddScore()
+        {
+            playerScore += 1;
+        }
     }
 }
