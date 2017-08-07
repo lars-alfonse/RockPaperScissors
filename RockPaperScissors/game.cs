@@ -75,12 +75,12 @@ namespace RockPaperScissors
         }
         private bool CheckScore(Player playerOne, Player playerTwo)
         {
-            if (playerOne.playerScore > 2)
+            if (playerOne.playerScore > scoreLimit)
             {
                 Console.WriteLine($"{playerOne.playerName} Wins The Game!!!");
                 return true;
             }
-            else if (playerTwo.playerScore > 2)
+            else if (playerTwo.playerScore > scoreLimit)
             {
                 Console.WriteLine($"{playerTwo.playerName} Wins The Game!!!");
                 return true;
@@ -94,6 +94,10 @@ namespace RockPaperScissors
         {
             Console.Clear();
         }
+        private void ReportScores(Player playerOne, Player playerTwo)
+        {
+            Console.WriteLine($"{playerOne.playerName}'s score is {playerOne.playerScore} \n{playerTwo.playerName}'s score is {playerTwo.playerScore}\n");
+        }
         public void StartGame(Player playerOne, Player playerTwo)
         {
             bool GameOver = false;
@@ -104,6 +108,7 @@ namespace RockPaperScissors
                 playerTwo.ChooseMove();
                 ClearBoard();
                 CompareSelection(playerOne, playerTwo);
+                ReportScores(playerOne, playerTwo);
                 GameOver = CheckScore(playerOne, playerTwo);
             }
             Console.ReadLine();
