@@ -10,10 +10,8 @@ namespace RockPaperScissors
     {
         protected Random rnd = new Random();
 
-        public Robot(int playerNumber)
+        public Robot(int playerNumber) : base(playerNumber)
         {
-            playerScore = 0;
-            this.playerNumber = playerNumber;
             playerName = $"Computer Player {playerNumber}";
         }
         public override void ChooseMove()

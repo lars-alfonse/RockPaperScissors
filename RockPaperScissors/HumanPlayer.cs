@@ -8,15 +8,13 @@ namespace RockPaperScissors
 {
     class Human : Player
     {
-        public Human(int playerNumber)
+        public Human(int playerNumber) : base(playerNumber)
         {
-            playerScore = 0;
-            this.playerNumber = playerNumber;
             playerName = playerNameSelect();
         }
         public override void ChooseMove()
         {
-            Console.WriteLine($"{playerName} would you like to pick: \nFor Rock press 0 \nFor Paper press 1 \nFor Scissors press 2 \n For Spock press 3 \nFor Lizard press 4");
+            Console.WriteLine($"{playerName} would you like to pick: \nFor Rock press 0 \nFor Paper press 1 \nFor Scissors press 2 \nFor Spock press 3 \nFor Lizard press 4");
             playerSelection = int.Parse(Console.ReadLine());
         }
         private string playerNameSelect()

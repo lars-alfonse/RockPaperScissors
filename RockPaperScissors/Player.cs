@@ -13,6 +13,12 @@ namespace RockPaperScissors
         public int playerScore;
         public string playerName;
 
+        public Player(int playerNumber)
+        {
+            playerScore = 0;
+            this.playerNumber = playerNumber;
+
+        }
         public abstract void ChooseMove();
         public void AddScore()
         {
