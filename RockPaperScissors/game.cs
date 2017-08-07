@@ -8,6 +8,8 @@ namespace RockPaperScissors
 {
     class Game
     {
+        private Player playerOne;
+        private Player playerTwo;
         public int numberOfHumanPlayers;
         public int scoreLimit;
 
@@ -30,10 +32,17 @@ namespace RockPaperScissors
                 GetHumanPlayers();
                 return;
             }
-            if (numberOfHumanPlayers == 1 || numberOfHumanPlayers == 2)
+            if (numberOfHumanPlayers == 2)
             {
-                Console.WriteLine($"There will be {numberOfHumanPlayers} humans playing");
+                playerOne = new Human(1);
+                playerTwo = new Human(2);
             }
+            else if (numberOfHumanPlayers == 1)
+                {
+
+                playerTwo = new Robot(2);
+                playerOne = new Human(1);
+                }
             else
             {
                 Console.WriteLine("please select 1 or 2 players");
@@ -52,6 +61,7 @@ namespace RockPaperScissors
             {
                 Console.WriteLine("please enter an integer number");
                 GetScoreLimit();
+                return;
             }
             if (gameNumberChoice % 2 == 0)
             {
@@ -71,7 +81,7 @@ namespace RockPaperScissors
             }  
 
         }
-        private void CompareSelection(Player playerOne, Player playerTwo)
+        private void CompareSelection()
         {
             int scoreComparison;
             scoreComparison = (5 + playerOne.playerSelection - playerTwo.playerSelection) % 5;
@@ -90,7 +100,7 @@ namespace RockPaperScissors
                 playerOne.AddScore();
             }
         }
-        private bool CheckScore(Player playerOne, Player playerTwo)
+        private bool CheckScore()
         {
             if (playerOne.playerScore > scoreLimit)
             {
@@ -111,11 +121,11 @@ namespace RockPaperScissors
         {
             Console.Clear();
         }
-        private void ReportScores(Player playerOne, Player playerTwo)
+        private void ReportScores()
         {
             Console.WriteLine($"{playerOne.playerName}'s score is {playerOne.playerScore} \n{playerTwo.playerName}'s score is {playerTwo.playerScore}\n");
         }
-        public void StartGame(Player playerOne, Player playerTwo)
+        public void StartGame()
         {
             bool GameOver = false;
             while (!GameOver)
@@ -124,9 +134,9 @@ namespace RockPaperScissors
                 ClearBoard();
                 playerTwo.ChooseMove();
                 ClearBoard();
-                CompareSelection(playerOne, playerTwo);
-                ReportScores(playerOne, playerTwo);
-                GameOver = CheckScore(playerOne, playerTwo);
+                CompareSelection();
+                ReportScores();
+                GameOver = CheckScore();
             }
             Console.ReadLine();
         }
