@@ -19,9 +19,18 @@ namespace RockPaperScissors
 
         private void GetHumanPlayers()
         {
-            Console.WriteLine("How many human people will be playing? (1 or 2)");
-            numberOfHumanPlayers = int.Parse(Console.ReadLine());
-            if(numberOfHumanPlayers == 1 || numberOfHumanPlayers == 2)
+            try
+            {
+                Console.WriteLine("How many human people will be playing? (1 or 2)");
+                numberOfHumanPlayers = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("please enter an integer number");
+                GetHumanPlayers();
+                return;
+            }
+            if (numberOfHumanPlayers == 1 || numberOfHumanPlayers == 2)
             {
                 Console.WriteLine($"There will be {numberOfHumanPlayers} humans playing");
             }
@@ -33,9 +42,17 @@ namespace RockPaperScissors
         }
         private void GetScoreLimit()
         {
-            int gameNumberChoice;
-            Console.WriteLine("Please Select Number of Games: (Best out of...)");
-            gameNumberChoice = int.Parse(Console.ReadLine());
+            int gameNumberChoice = 0;
+            try
+            {
+                Console.WriteLine("Please Select Number of Games: (Best out of...)");
+                gameNumberChoice = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("please enter an integer number");
+                GetScoreLimit();
+            }
             if (gameNumberChoice % 2 == 0)
             {
                 Console.WriteLine("Please Select an odd number of games");
