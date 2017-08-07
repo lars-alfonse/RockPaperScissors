@@ -54,7 +54,7 @@ namespace RockPaperScissors
             }  
 
         }
-        private void compareSelection(Player playerOne, Player playerTwo)
+        private void CompareSelection(Player playerOne, Player playerTwo)
         {
             int scoreComparison;
             scoreComparison = (5 + playerOne.playerSelection + playerTwo.playerSelection) % 5;
@@ -93,6 +93,20 @@ namespace RockPaperScissors
         private void ClearBoard()
         {
             Console.Clear();
+        }
+        public void StartGame(Player playerOne, Player playerTwo)
+        {
+            bool GameOver = false;
+            while (!GameOver)
+            {
+                playerOne.ChooseMove();
+                ClearBoard();
+                playerTwo.ChooseMove();
+                ClearBoard();
+                CompareSelection(playerOne, playerTwo);
+                GameOver = CheckScore(playerOne, playerTwo);
+            }
+            Console.ReadLine();
         }
     }
 }
